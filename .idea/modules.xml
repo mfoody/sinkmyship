@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/common.iml" filepath="$PROJECT_DIR$/.idea/modules/common/common.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/common_itest.iml" filepath="$PROJECT_DIR$/.idea/modules/common/common_itest.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/common_main.iml" filepath="$PROJECT_DIR$/.idea/modules/common/common_main.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/common_test.iml" filepath="$PROJECT_DIR$/.idea/modules/common/common_test.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/games/games.iml" filepath="$PROJECT_DIR$/.idea/modules/games/games.iml" group="games" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/games/games_itest.iml" filepath="$PROJECT_DIR$/.idea/modules/games/games_itest.iml" group="games" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/games/games_main.iml" filepath="$PROJECT_DIR$/.idea/modules/games/games_main.iml" group="games" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/games/games_test.iml" filepath="$PROJECT_DIR$/.idea/modules/games/games_test.iml" group="games" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/players/players.iml" filepath="$PROJECT_DIR$/.idea/modules/players/players.iml" group="players" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/players/players_itest.iml" filepath="$PROJECT_DIR$/.idea/modules/players/players_itest.iml" group="players" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/players/players_main.iml" filepath="$PROJECT_DIR$/.idea/modules/players/players_main.iml" group="players" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/players/players_test.iml" filepath="$PROJECT_DIR$/.idea/modules/players/players_test.iml" group="players" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sinkmyship.iml" filepath="$PROJECT_DIR$/.idea/modules/sinkmyship.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sinkmyship_itest.iml" filepath="$PROJECT_DIR$/.idea/modules/sinkmyship_itest.iml" group="sinkmyship" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sinkmyship_main.iml" filepath="$PROJECT_DIR$/.idea/modules/sinkmyship_main.iml" group="sinkmyship" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sinkmyship_test.iml" filepath="$PROJECT_DIR$/.idea/modules/sinkmyship_test.iml" group="sinkmyship" />
+    </modules>
+  </component>
+</project>

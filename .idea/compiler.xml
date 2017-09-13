@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="common_itest" target="1.8" />
+      <module name="common_main" target="1.8" />
+      <module name="common_test" target="1.8" />
+      <module name="games_itest" target="1.8" />
+      <module name="games_main" target="1.8" />
+      <module name="games_test" target="1.8" />
+      <module name="players_itest" target="1.8" />
+      <module name="players_main" target="1.8" />
+      <module name="players_test" target="1.8" />
+      <module name="sinkmyship_itest" target="1.8" />
+      <module name="sinkmyship_main" target="1.8" />
+      <module name="sinkmyship_test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-parameters" />
+  </component>
+</project>

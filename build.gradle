@@ -1,0 +1,56 @@
+group 'sinkmyship'
+version '1.0-SNAPSHOT'
+
+allprojects {
+    apply plugin: 'java'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    compileJava {
+        options.compilerArgs += ["-parameters"]
+        options.fork = true
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    configurations {
+        itestCompile.extendsFrom testCompile
+        itestRuntime.extendsFrom testRuntime
+    }
+
+    sourceSets {
+        itest {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            // You can add other directories to the classpath like this:
+            //runtimeClasspath += files('src/itest/resources/com/buransky')
+            // Use "java" if you don't use Scala as a programming language
+            java.srcDir file('src/itest/java')
+        }
+
+        // This is just to trick IntelliJ IDEA to add integration test
+        // resources to classpath when running integration tests from
+        // the IDE. It's is not a good solution but I don't know about
+        // a better one.
+        test {
+            resources.srcDir file('src/itest/resources')
+        }
+    }
+
+    task itest(type: Test) {
+        testClassesDir = sourceSets.itest.output.classesDir
+        classpath = sourceSets.itest.runtimeClasspath
+        // This is not needed, but I like to see which tests have run
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+    }
+
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

@@ -1,0 +1,42 @@
+dependencies {
+
+    compile(
+            "com.amazonaws:aws-java-sdk-dynamodb:1.11.177",
+            project(':common')
+    )
+
+    testCompile(
+            'junit:junit:4.12',
+            'org.mockito:mockito-core:2.+'
+    )
+
+    itestCompile(
+            'junit:junit:4.12',
+            'com.squareup.okhttp3:okhttp:3.8.1',
+            project(':common').sourceSets.itest.output
+    )
+}
+
+// Task for building the zip file for upload
+task buildZip(type: Zip) {
+    // Using the Zip API from gradle to build a zip file of all the dependencies
+    //
+    // The path to this zip file can be set in the serverless.yml file for the
+    // package/artifact setting for deployment to the S3 bucket
+    //
+    // Link: https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Zip.html
+
+    // set the base name of the zip file
+    baseName = "players"
+    from compileJava
+    from processResources
+    into('lib') {
+        from configurations.runtime
+    }
+}
+
+build.dependsOn buildZip
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.5'
+}
