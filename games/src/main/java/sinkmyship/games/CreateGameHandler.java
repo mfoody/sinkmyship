@@ -23,7 +23,8 @@ public class CreateGameHandler extends ApiGatewayHandler<CreateGame, GameView> {
 
     @Override
     public Try<GameView> handle(CreateGame startGame) {
-        Game game = Game.of(startGame.gameId, startGame.player1, startGame.player2, startGame.width, startGame.height);
+        Game game = Game.of(startGame.gameId(), startGame.player1(), startGame.player2(), startGame.width(),
+                startGame.height());
         return repository.create(game).map(GameView::of);
     }
 

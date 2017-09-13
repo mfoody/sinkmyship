@@ -23,7 +23,7 @@ public class StartGameHandler extends ApiGatewayHandler<StartGame, GameView> {
 
     @Override
     public Try<GameView> handle(StartGame startGame) {
-        return repository.load(startGame.gameId)
+        return repository.load(startGame.gameId())
                 .map(Game::startGame)
                 .flatMap(repository::update)
                 .map(GameView::of);

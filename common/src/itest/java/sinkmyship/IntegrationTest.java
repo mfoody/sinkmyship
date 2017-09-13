@@ -14,14 +14,8 @@ public abstract class IntegrationTest {
 
     protected final OkHttpClient client = new OkHttpClient();
 
-    private final static String lambdaUrl = "https://%s.execute-api.%s.amazonaws.com/%s/%s";
-
-    private final static String awsRegion = "us-east-1";
-
-    private final static String awsStage = "dev";
-
-    public String url(String awsApiId, String path) {
-        return String.format(lambdaUrl, awsApiId, awsRegion, awsStage, path);
+    public String url(String path) {
+        return String.format("https://api.sinkmyshipgame.com/%s", path);
     }
 
     public <C> Response post(C command, String url) throws Exception {

@@ -35,8 +35,8 @@ public class CreateGameHandlerTest {
 
     @Test
     public void handle() throws Exception {
-        CreateGame command = new CreateGame("123", "456", "abc", 5, 4);
-        Game game = Game.of(command.gameId, command.player1, command.player2, command.width, command.height);
+        CreateGame command = ImmutableCreateGame.of("123", "456", "abc", 5, 4);
+        Game game = Game.of(command.gameId(), command.player1(), command.player2(), command.width(), command.height());
 
         GameRepository repository = mock(GameRepository.class);
         when(repository.create(game)).thenReturn(Try.success(game));

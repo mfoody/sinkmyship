@@ -15,11 +15,11 @@ public class StartGameHandlerTest {
 
     @Test
     public void handle() {
-        StartGame cmd = new StartGame("1");
-        Game game = Game.of(cmd.gameId, "p1", "p2", 10, 10);
+        StartGame cmd = ImmutableStartGame.of("1");
+        Game game = Game.of(cmd.gameId(), "p1", "p2", 10, 10);
 
         GameRepository repository = mock(GameRepository.class);
-        when(repository.load(cmd.gameId)).thenReturn(Try.success(game));
+        when(repository.load(cmd.gameId())).thenReturn(Try.success(game));
 
         Game startedGame = game.startGame();
         when(repository.update(startedGame)).thenReturn(Try.success(startedGame));

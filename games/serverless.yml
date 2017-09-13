@@ -17,6 +17,17 @@ service: games
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X"
 
+plugins:
+  - serverless-domain-manager
+
+custom:
+  customDomain:
+    basePath: 'games'
+    domainName: api.sinkmyshipgame.com
+    certificateName: api.sinkmyshipgame.com
+    stage: '${self:provider.stage}'
+    createRoute53Record: true
+
 provider:
   name: aws
   runtime: java8
@@ -34,27 +45,6 @@ provider:
         - dynamodb:PutItem
       Resource: "*"
 
-# you can add statements to the Lambda function's IAM Role here
-#  iamRoleStatements:
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:ListBucket"
-#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:PutObject"
-#      Resource:
-#        Fn::Join:
-#          - ""
-#          - - "arn:aws:s3:::"
-#            - "Ref" : "ServerlessDeploymentBucket"
-#            - "/*"
-
-# you can define service wide environment variables here
-#  environment:
-#    variable1: value1
-
-# you can add packaging information here
 package:
   artifact: build/distributions/games.zip
 
@@ -63,35 +53,35 @@ functions:
     handler: sinkmyship.games.CancelGameHandler
     events:
       - http:
-          path: games/CancelGame
+          path: CancelGame
           method: put
 
   createGame:
     handler: sinkmyship.games.CreateGameHandler
     events:
       - http:
-          path: games/CreateGame
+          path: CreateGame
           method: post
 
   placeShip:
     handler: sinkmyship.games.PlaceShipHandler
     events:
       - http:
-          path: games/PlaceShip
+          path: PlaceShip
           method: put
 
   shoot:
     handler: sinkmyship.games.ShootHandler
     events:
       - http:
-          path: games/Shoot
+          path: Shoot
           method: put
 
   startGame:
     handler: sinkmyship.games.StartGameHandler
     events:
       - http:
-          path: games/StartGame
+          path: StartGame
           method: put
 
 #    The following are a few example events you can configure
