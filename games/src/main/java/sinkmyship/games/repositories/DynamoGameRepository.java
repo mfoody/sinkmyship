@@ -3,11 +3,19 @@ package sinkmyship.games.repositories;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.document.*;
+import com.amazonaws.services.dynamodbv2.model.ScanRequest;
+import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vavr.collection.HashMap;
+import io.vavr.collection.List;
 import io.vavr.collection.Map;
+import io.vavr.control.Option;
 import io.vavr.control.Try;
 import sinkmyship.common.Serializer;
+import sinkmyship.games.GameDetailedView;
+import sinkmyship.games.GameSummaryView;
+import sinkmyship.games.ImmutableGameDetailedView;
+import sinkmyship.games.ImmutableGameSummaryView;
 import sinkmyship.games.domain.*;
 
 import java.time.Instant;
@@ -16,6 +24,8 @@ import java.time.Instant;
  *
  */
 class DynamoGameRepository extends GameRepository {
+
+    private final AmazonDynamoDB client;
 
     private final Table table;
 
@@ -27,8 +37,9 @@ class DynamoGameRepository extends GameRepository {
             new TypeReference<Map<String, Board>>() {
             };
 
+
     DynamoGameRepository() {
-        AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().withRegion("us-east-1").build();
+        client = AmazonDynamoDBClientBuilder.standard().withRegion("us-east-1").build();
         DynamoDB db = new DynamoDB(client);
         table = db.getTable("games");
     }
@@ -73,6 +84,31 @@ class DynamoGameRepository extends GameRepository {
             });
         });
 
+    }
+
+    @Override
+    public Try<List<GameSummaryView>> findAllGames() {
+        return Try.of(() -> {
+            ScanRequest request = new ScanRequest(table.getTableName()).withAttributesToGet("id", "status");
+            ScanResult result = client.scan(request);
+            return result.getItems().stream()
+                    .map(map -> {
+                        String id = map.get("id").getS();
+                        GameStatus status = GameStatus.valueOf(map.get("status").getS());
+                        return ImmutableGameSummaryView.of(id, status);
+                    })
+                    .collect(List.collector());
+        });
+    }
+
+    @Override
+    public Try<Option<GameDetailedView>> findOneGame(String gameId) {
+        return Try.of(() -> {
+            return Option.of(table.getItem("id", gameId)).map((item) -> {
+                GameStatus status = GameStatus.valueOf(item.getString("status"));
+                return ImmutableGameDetailedView.of(gameId, status);
+            });
+        });
     }
 
 }

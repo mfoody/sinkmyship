@@ -18,6 +18,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sinkmyship_itest.iml" filepath="$PROJECT_DIR$/.idea/modules/sinkmyship_itest.iml" group="sinkmyship" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sinkmyship_main.iml" filepath="$PROJECT_DIR$/.idea/modules/sinkmyship_main.iml" group="sinkmyship" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sinkmyship_test.iml" filepath="$PROJECT_DIR$/.idea/modules/sinkmyship_test.iml" group="sinkmyship" />
+      <module fileurl="file://$PROJECT_DIR$/ui/ui.iml" filepath="$PROJECT_DIR$/ui/ui.iml" group="games" />
     </modules>
   </component>
 </project>

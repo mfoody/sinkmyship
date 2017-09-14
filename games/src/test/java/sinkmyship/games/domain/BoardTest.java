@@ -3,6 +3,7 @@ package sinkmyship.games.domain;
 import io.vavr.collection.HashMap;
 import io.vavr.collection.List;
 import io.vavr.control.Option;
+import io.vavr.control.Validation;
 import org.junit.Test;
 import sinkmyship.common.Serializer;
 

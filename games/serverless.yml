@@ -55,6 +55,7 @@ functions:
       - http:
           path: CancelGame
           method: put
+          cors: true
 
   createGame:
     handler: sinkmyship.games.CreateGameHandler
@@ -62,6 +63,7 @@ functions:
       - http:
           path: CreateGame
           method: post
+          cors: true
 
   placeShip:
     handler: sinkmyship.games.PlaceShipHandler
@@ -69,6 +71,7 @@ functions:
       - http:
           path: PlaceShip
           method: put
+          cors: true
 
   shoot:
     handler: sinkmyship.games.ShootHandler
@@ -76,6 +79,7 @@ functions:
       - http:
           path: Shoot
           method: put
+          cors: true
 
   startGame:
     handler: sinkmyship.games.StartGameHandler
@@ -83,6 +87,23 @@ functions:
       - http:
           path: StartGame
           method: put
+          cors: true
+
+  findAllGames:
+    handler: sinkmyship.games.FindAllGamesHandler
+    events:
+      - http:
+          path: FindAllGames
+          method: post
+          cors: true
+
+  findOneGame:
+    handler: sinkmyship.games.FindOneGameHandler
+    events:
+      - http:
+          path: FindOneGame
+          method: post
+          cors: true
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
